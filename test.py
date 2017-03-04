@@ -37,7 +37,7 @@ if __name__=="__main__":
 
         sentences = nlp.process_text(text)
 
-        print("Classifying", f)
+        print("Classifying:", f.split("/")[-1])
         prediction = classifier.classify(sentences)
         pp.pprint(prediction)
         print()
