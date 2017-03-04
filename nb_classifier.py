@@ -74,7 +74,6 @@ class NaiveBayes:
                 max_score = score
                 max_label = label
 
-
         confidence = max_score / total_score
 
         return {
