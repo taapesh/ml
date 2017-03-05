@@ -10,6 +10,7 @@ class NaiveBayes:
         self.vocab = Vocab()
 
 
+    # Train the classifier by adding to vocabulary from a list of sentences
     def train(self, sentences, label):
         # Build vocab
         vocab = Vocab.build_vocab(sentences)
@@ -24,6 +25,7 @@ class NaiveBayes:
         self.compute_priors()
     
 
+    # Calculate prior probability for each label
     def compute_priors(self):
         total_labels = sum(self.labels.values())
         
@@ -31,13 +33,14 @@ class NaiveBayes:
             self.priors[label] = count / total_labels
 
 
+    # Given a list of sentences, predict the label from available labels
     def classify(self, sentences):
         vocab = Vocab.build_vocab(sentences)
         total_words = self.vocab.vocab_word_count()
         labeled_vocab = self.vocab.get_labeled_vocab()
         log_probabilties = {}
 
-
+        # Initialize log probabilities for each label
         for label in self.labels:
             log_probabilties[label] = 0.0
 
@@ -45,6 +48,7 @@ class NaiveBayes:
             if word not in self.vocab.vocab:
                 continue
             
+            # Use vocabulary to compute probability of word for each label
             p_word = self.vocab.vocab[word] / total_words
             p_word_given_label = {}
 

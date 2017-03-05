@@ -1,8 +1,7 @@
 import string
-import nltk
+from functools import reduce
 from nltk.corpus import stopwords as stop
 from nltk.tokenize import word_tokenize, sent_tokenize
-from functools import reduce
 
 
 class TextProcessor:
